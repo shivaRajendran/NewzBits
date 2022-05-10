@@ -208,6 +208,8 @@ function App() {
         </div>
       </section>
       <section
+
+      
         id="section-wrapper"
         style={{
           display: modal.loader ? "unset" : "none",
