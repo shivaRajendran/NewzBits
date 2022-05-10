@@ -1,0 +1,38 @@
+@media screen and (max-width: 640px) {
+    .mb-only {
+        display: flex !important;
+    }
+    #header{
+        overflow: hidden;
+    }
+    .header-inner {
+        // position: relative;
+        padding: 1rem;
+        width: 100vw;
+    }
+    .header-links {
+        z-index: 2;
+        padding: 1rem;
+        margin: 1rem 0 0 -1rem;
+        position: absolute;
+        left: calc(0% + 1rem);
+        // background: #fff;
+        box-shadow: 0 2.5px 5px rgba(0,0,0,.25);
+        width: 100vw;
+        flex-direction: column;
+        align-items: flex-start;
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .search-wrapper {
+        display: none;
+    }
+    .language-switch {
+        display: none;
+    }
+    .logo-right{
+        gap: 1rem;
+    }
+}

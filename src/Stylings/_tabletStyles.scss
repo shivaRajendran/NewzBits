@@ -1,0 +1,23 @@
+@media screen and (max-width: 1024px) and (min-width: 641px){
+    .header-links{
+        .search-wrapper{
+            display: none;
+        }
+    }
+    .header-inner{
+        width: 100vw;
+        padding: 1rem 2rem;
+        .header-logo{
+            .logo-right{
+                gap: 1.5rem;
+                .search-wrapper>input{
+                    width: 200px;
+                }
+            }
+        }
+    }
+    ul.nav-links{
+        overflow-x: auto;
+    }
+
+}
