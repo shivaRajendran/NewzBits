@@ -12,6 +12,7 @@ export default function ExportFooter() {
         <div className="link-seperator"></div>
         <a
           href="https://dribbble.com/siva_kumaran"
+          target="_blank"
           rel="noreferrer"
         >
           <i class="ri-dribbble-line"></i>
