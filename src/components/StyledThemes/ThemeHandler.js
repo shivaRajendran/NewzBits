@@ -532,7 +532,11 @@ input::-webkit-inner-spin-button {
     p{
         color: rgba(var(--text), .7);
         font-size: 0.9rem;
+        a{
+            cursor: pointer;
+        }
         span{
+            cursor: pointer;
             color: var(--primary);
         }
     }
