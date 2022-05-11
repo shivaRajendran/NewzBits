@@ -103,7 +103,7 @@ function ExportHeader(props) {
               </button>
               <div className="language-switch">
                 <div className="switch-wrapper flex-row-sb-center">
-                  <span>ENGLISH</span>
+                  <span>LANGUAGE</span>
                   <div className="vertical-line"></div>
                   <i className="ri-arrow-down-s-line"></i>
                 </div>

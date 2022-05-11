@@ -31,6 +31,12 @@ html, body{
 body{
     background: var(--body);
 }
+a{
+    text-decoration: none;
+}
+a, a:visited, a:hover, a:active {
+  color: inherit;
+}
 #header {
     width: 100vw;
     display: grid;
@@ -494,6 +500,44 @@ input::-webkit-inner-spin-button {
         border-radius: 5px;
     }
 }
+.footer-wrapper{
+    padding: 4rem;
+    display: flex;
+    flex-direction: column; 
+    gap: 2rem;
+    align-items: center;
+    background: var(--body);
+    .footer-links{
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        a{
+            font-size: 1.5rem;
+            color: rgba(var(--text), 0.6);
+            transition: .1s all ease;
+            margin-top: 5px;
+            &:hover{
+            transition: .1s all ease;
+                color: var(--primary);
+            }
+        }
+        .link-seperator{
+            height: 18px;
+            width: 1px;
+            border-left: solid 1px rgba(var(--text), 0.5);
+            transform: rotate(20deg); 
+            /* display: none; */
+        }
+    }
+    p{
+        color: rgba(var(--text), .7);
+        font-size: 0.9rem;
+        span{
+            color: var(--primary);
+        }
+    }
+}
+
 /* Animations */
 @keyframes spinner{
     50%{
@@ -769,5 +813,11 @@ input::-webkit-inner-spin-button {
     }
     .d-none{
         display: none !important;
+    }
+    .footer-wrapper{
+        padding: var(--pad);
+        p{
+            text-align: center;
+        }
     }
 }`;

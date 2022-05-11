@@ -8,6 +8,7 @@ import { NoResDetailed } from "./components/SvgContainer";
 import Pagination from "./components/Pagination";
 import DetailedView from "./components/DetailedView";
 import LangMobile from "./components/LangListMobile";
+import Footer from './components/Footer';
 
 function App() {
   const [response, udpateResponse] = useState([]);
@@ -78,6 +79,7 @@ function App() {
   };
 
   function showLoader() {
+    disableScroll();
     updateModal((prev) => {
       var x = 1;
       return {
@@ -89,6 +91,7 @@ function App() {
   }
 
   function dismissLoader() {
+    enableScroll();
     updateModal((prev) => {
       var x = 1;
       return {
@@ -130,6 +133,21 @@ function App() {
     dismissLoader();
   }
 
+  function disableScroll() {
+    // Get the current page scroll position
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  
+    // if any scroll is attempted, set this to the previous value
+    window.onscroll = function () {
+      window.scrollTo(scrollLeft, scrollTop);
+    };
+  }
+  
+  function enableScroll() {
+    window.onscroll = function () {};
+  }
+
   const init = async () => {
     showLoader();
     let payload = {
@@ -141,14 +159,15 @@ function App() {
     dismissLoader();
   };
 
-  function onLangClick(params) {
-    alert("clicked");
-    console.log(params);
+  async function onLangClick(params) {
+    cancelClick();
+    showLoader();
+    let res = await getResponse(params);
+    updateAPIResponse(res, params);
   }
 
   function showLangList() {
     updateModal((prev) => {
-      var x = 1;
       return {
         ...prev,
         langMb: true,
@@ -257,6 +276,7 @@ function App() {
           onCancelClick={cancelClick}
         />
       </section>
+      <Footer></Footer>
     </>
   );
 }
