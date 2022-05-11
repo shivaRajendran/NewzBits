@@ -1,4 +1,7 @@
 export default function ExportFooter() {
+  function openApi(){
+    window.open('https://newsdata.io/', '_blank');
+  }
   return (
     <div className="footer-wrapper">
       <div className="footer-links">
@@ -36,7 +39,7 @@ export default function ExportFooter() {
       </div>
       <p>
         Designed and Developed by <span>Shiva Kumaran</span> in association with{" "}
-        <span>newsdata.io</span>
+        <span onClick={openApi}>newsdata.io</span>
       </p>
     </div>
   );
