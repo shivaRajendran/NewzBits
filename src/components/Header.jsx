@@ -37,6 +37,9 @@ function ExportHeader(props) {
 
   function setupApiCall(params){
     props.toggleContent(false);
+    if (window.innerWidth < 641){
+      setHamState(true);
+    }
     setToggleState(false);
     console.log(params);
     props.showLangMb();

@@ -2,11 +2,8 @@ import {ExportList as List} from "./List";
 import Constant from "../ServiceHandler/constants";
 
 export default function ExportLangMobile(props) {
-  var displayValue = {
-    display: props.displayParam === undefined ? 'none !important' : props.displayParam+' !important'
-  }
   return (
-    <div className="mb-lang" style={displayValue}>
+    <div className={props.displayParam === undefined ? "mg-lang d-none": props.displayParam === 'flex' ? 'mb-lang d-flex': 'mb-lang d-none'}>
       <ul class="mb-lang-wrapper">
         {Constant.languages.map((item, index) => {
           return (

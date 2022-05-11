@@ -82,6 +82,7 @@ function App() {
       var x = 1;
       return {
         ...prev,
+        langMb: false,
         loader: true,
       };
     });
@@ -92,6 +93,7 @@ function App() {
       var x = 1;
       return {
         ...prev,
+        langMb: false,
         loader: false,
       };
     });
@@ -141,6 +143,7 @@ function App() {
 
   function onLangClick(params) {
     alert("clicked");
+    console.log(params);
   }
 
   function showLangList() {
@@ -249,7 +252,7 @@ function App() {
       >
         <Loader displayParam={modal.loader ? "grid" : "none"} />
         <LangMobile
-          displayParam={modal.langMb ? "flex" : "none"}
+          displayParam={(modal.langMb && !modal.loader) ? "flex" : "none"}
           onClick={onLangClick}
           onCancelClick={cancelClick}
         />

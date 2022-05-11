@@ -764,4 +764,10 @@ input::-webkit-inner-spin-button {
             border-radius: 5px;
         }
     }
+    .d-flex{
+        display: flex;
+    }
+    .d-none{
+        display: none !important;
+    }
 }`;
