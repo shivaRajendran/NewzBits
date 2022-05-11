@@ -30,14 +30,21 @@ function ExportHeader(props) {
 
   async function onLinkClick(params) {
     props.showLoader();
-    if (window.innerWidth < 641) {
-      setHamState(true);
-    }
+    setupApiCall();
+    const value = await getResponse(params);
+    props.updateRes(value, params);
+  }
+
+  function setupApiCall(params){
     props.toggleContent(false);
     setToggleState(false);
     console.log(params);
-    const value = await getResponse(params);
-    props.updateRes(value, params);
+    props.showLangMb();
+  }
+
+  function langClicked(){
+    setupApiCall();
+    props.showLangMb();
   }
 
   function handleHamClick() {
@@ -137,7 +144,7 @@ function ExportHeader(props) {
                   );
                 })}
 
-                <li className="mb-only">LANGUAGE</li>
+                <li className="mb-only" onClick={langClicked}>LANGUAGE</li>
               </ul>
             </div>
             <Search triggerSearch={onLinkClick} />

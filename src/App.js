@@ -7,6 +7,7 @@ import Loader from "./components/Loader";
 import { NoResDetailed } from "./components/SvgContainer";
 import Pagination from "./components/Pagination";
 import DetailedView from "./components/DetailedView";
+import LangMobile from "./components/LangListMobile";
 
 function App() {
   const [response, udpateResponse] = useState([]);
@@ -17,24 +18,25 @@ function App() {
     empty: false,
   });
   const [modal, updateModal] = useState({
-    loader: true,
+    loader: false,
     triggerDetails: false,
+    langMb: false,
   });
   const [description, updateDescription] = useState({
-    title: '',
-    src: '',
-    date: '',
-    thumbnail: '',
-    desc: '',
-    link: '',
-    content: '',
-    id: '',
-    currentResponse: response.results
+    title: "",
+    src: "",
+    date: "",
+    thumbnail: "",
+    desc: "",
+    link: "",
+    content: "",
+    id: "",
+    currentResponse: response.results,
   });
-  function onNewsClick(props){
+  function onNewsClick(props) {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
     showContent(true);
-    updateDescription(prev => {
+    updateDescription((prev) => {
       return {
         ...prev,
         title: props.title,
@@ -44,24 +46,26 @@ function App() {
         desc: props.desc,
         link: props.link,
         content: props.content,
-        id: props.id
-      }
-    })
+        id: props.id,
+      };
+    });
   }
 
-  function renderDetailedView(){
-    return <DetailedView 
-    title={description.title}
-    src={description.src}
-    date={description.date}
-    thumbnail={description.thumbnail}
-    desc={description.desc}
-    link={description.link}
-    currentResponse={description.currentResponse}
-    toggleContent={showContent}
-    id={description.id}
-    key={description.id}
-    />
+  function renderDetailedView() {
+    return (
+      <DetailedView
+        title={description.title}
+        src={description.src}
+        date={description.date}
+        thumbnail={description.thumbnail}
+        desc={description.desc}
+        link={description.link}
+        currentResponse={description.currentResponse}
+        toggleContent={showContent}
+        id={description.id}
+        key={description.id}
+      />
+    );
   }
 
   const showContent = (flag) => {
@@ -75,6 +79,7 @@ function App() {
 
   function showLoader() {
     updateModal((prev) => {
+      var x = 1;
       return {
         ...prev,
         loader: true,
@@ -84,6 +89,7 @@ function App() {
 
   function dismissLoader() {
     updateModal((prev) => {
+      var x = 1;
       return {
         ...prev,
         loader: false,
@@ -94,12 +100,12 @@ function App() {
   function updateAPIResponse(res, source) {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
     udpateResponse(res);
-    updateDescription(prev => {
+    updateDescription((prev) => {
       return {
         ...prev,
-        currentResponse: res.results
-      }
-    })
+        currentResponse: res.results,
+      };
+    });
     console.log(response);
     if (res.totalResults !== 0 && res.length !== null) {
       updateNoRes(false);
@@ -133,8 +139,37 @@ function App() {
     dismissLoader();
   };
 
-  function updateHeader() {}
+  function onLangClick(params) {
+    alert("clicked");
+  }
 
+  function showLangList() {
+    updateModal((prev) => {
+      var x = 1;
+      return {
+        ...prev,
+        langMb: true,
+      };
+    });
+  }
+  function cancelClick() {
+    updateModal((prev) => {
+      return {
+        ...prev,
+        langMb: false,
+      };
+    });
+  }
+  function toggleModal() {
+    let flag = false;
+    for (const [key, value] of Object.entries(modal)) {
+      if (value) {
+        flag = true;
+        break;
+      }
+    }
+    return flag;
+  }
   useEffect(() => {
     init();
   }, []);
@@ -146,20 +181,21 @@ function App() {
         showLoader={showLoader}
         dismissLoader={dismissLoader}
         toggleContent={showContent}
+        showLangMb={showLangList}
       />
       <section id="content">
         <div
           className="content-wrapper"
-          style={{ display: (noRes || modal.triggerDetails) ? "none" : "initial" }}
+          style={{
+            display: noRes || modal.triggerDetails ? "none" : "initial",
+          }}
         >
           <SectionHeader
             value={sectionHeader.value}
             empty={sectionHeader.empty}
             operation={sectionHeader.operation}
           />
-          <div
-            className="card-wrapper"
-          >
+          <div className="card-wrapper">
             {response.results !== undefined
               ? response.results.map((item, index) => (
                   <Card
@@ -174,7 +210,6 @@ function App() {
                     src={item.source_id}
                     desc={item.description}
                     thumbnail={item.image_url}
-                    changeHeader={updateHeader}
                     toggleContent={showContent}
                     currentResponse={response.results}
                   />
@@ -201,24 +236,22 @@ function App() {
             <h1>Sorry no results found for your query</h1>
           </div>
         </div>
-        <div style={{display: modal.triggerDetails? 'initial': 'none'}}>
-          {
-            modal.triggerDetails? renderDetailedView(): null
-          }
+        <div style={{ display: modal.triggerDetails ? "initial" : "none" }}>
+          {modal.triggerDetails ? renderDetailedView() : null}
         </div>
       </section>
       <section
-
-      
         id="section-wrapper"
         style={{
-          display: modal.loader ? "unset" : "none",
+          display: (modal.loader || modal.langMb) ? "unset" : "none",
+          // display: 'unset'
         }}
       >
-        <Loader
-          style={{
-            display: modal.loader ? "grid" : "none",
-          }}
+        <Loader displayParam={modal.loader ? "grid" : "none"} />
+        <LangMobile
+          displayParam={modal.langMb ? "flex" : "none"}
+          onClick={onLangClick}
+          onCancelClick={cancelClick}
         />
       </section>
     </>
