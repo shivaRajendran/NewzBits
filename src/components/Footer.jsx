@@ -39,7 +39,7 @@ export default function ExportFooter() {
       </div>
       <p>
         Designed and Developed by <span>Shiva Kumaran</span> in association with{" "}
-        <span onClick={openApi}>newsdata.io</span>
+        <a hjref="https://newsdata.io/" target="_blank" rel="noreferrer"><span onClick={openApi}>newsdata.io</span></a>
       </p>
     </div>
   );
