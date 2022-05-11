@@ -753,6 +753,9 @@ input::-webkit-inner-spin-button {
         }
     }
     }
+    .no-results{
+        height: 600px;
+    }
     .svg-container{
         width: 300px;
     }
