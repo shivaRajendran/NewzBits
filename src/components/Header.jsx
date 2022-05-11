@@ -20,13 +20,7 @@ function ExportHeader(props) {
   });
   const [searchToggled, setToggleState] = useState(false);
 
-  function handleResize() {
-    setHamState(false);
-  }
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  }, []);
 
   async function onLinkClick(params) {
     props.showLoader();
