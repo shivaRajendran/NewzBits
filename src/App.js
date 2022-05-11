@@ -81,7 +81,6 @@ function App() {
   function showLoader() {
     disableScroll();
     updateModal((prev) => {
-      var x = 1;
       return {
         ...prev,
         langMb: false,
@@ -93,7 +92,6 @@ function App() {
   function dismissLoader() {
     enableScroll();
     updateModal((prev) => {
-      var x = 1;
       return {
         ...prev,
         langMb: false,
@@ -182,16 +180,7 @@ function App() {
       };
     });
   }
-  function toggleModal() {
-    let flag = false;
-    for (const [key, value] of Object.entries(modal)) {
-      if (value) {
-        flag = true;
-        break;
-      }
-    }
-    return flag;
-  }
+ 
   useEffect(() => {
     init();
   }, []);

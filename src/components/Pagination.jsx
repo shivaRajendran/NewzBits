@@ -1,20 +1,12 @@
 import { useState } from "react";
 import { getResponse } from "../ServiceHandler/Services";
 export default function ExportPagination(props) {
-  const [page, updatePage] = useState("");
-  const [pageDetails, updatePageDetails] = useState({
-    page: props.currentPage,
-    total: props.totalPages,
-  });
+  const [page] = useState("");
 
   function calcTotalpages(pages) {
     return Math.ceil(pages / 10);
   }
 
-  function handleChange(event) {
-    const { value: inputValue } = event.target;
-    updatePage(inputValue);
-  }
 
   async function handleSubmit(event) {
     props.showLoad();

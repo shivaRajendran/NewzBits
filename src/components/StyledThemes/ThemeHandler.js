@@ -815,7 +815,8 @@ input::-webkit-inner-spin-button {
         display: none !important;
     }
     .footer-wrapper{
-        padding: var(--pad);
+        padding: 4rem var(--pad);
+        gap: 3rem;
         p{
             text-align: center;
         }
