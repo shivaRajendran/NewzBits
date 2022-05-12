@@ -30,6 +30,7 @@ html, body{
 }
 body{
     background: var(--body);
+    overflow-x: hidden;
 }
 a{
     text-decoration: none;
