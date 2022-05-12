@@ -32,6 +32,19 @@ body{
     background: var(--body);
     overflow-x: hidden;
 }
+body::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  outline: none;
+  border-radius: 5px;
+}
 a{
     text-decoration: none;
 }
