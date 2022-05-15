@@ -418,20 +418,24 @@ input::-webkit-inner-spin-button {
     padding: 3rem;
     display: flex;
     gap: var(--pad);
+    position: relative;
 }
 .left-view{
     width: 70%;
     overflow: hidden;
 }
 .right-view{
+    position: sticky;
+    top: 0;
+    left: 0;
     width: 30%;
     h1{
         font-size: 2rem;
         color: rgba(var(--text), .8);
     }
     .feed-list{
-        height: 500px;
-        overflow: auto;
+        /* height: 500px;
+        overflow: auto; */
         padding: 1rem 0;
         li{
             line-height: 2;
